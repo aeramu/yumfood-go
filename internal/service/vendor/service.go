@@ -13,6 +13,9 @@ type service struct {
 
 func (s service) Create(name, description string) {
 	id := s.idGen.Generate()
+	if len(name) >= 128 {
+		name = name[:127]
+	}
 	err := s.repo.Put(id, name, description)
 	if err != nil {
 		log.Println(err)
@@ -20,6 +23,9 @@ func (s service) Create(name, description string) {
 }
 
 func (s service) Update(id, name, description string) {
+	if len(name) >= 128 {
+		name = name[:127]
+	}
 	err := s.repo.Update(id, name, description)
 	if err != nil {
 		log.Println(err)

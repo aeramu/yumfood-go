@@ -8,6 +8,7 @@ type Service interface {
 	GetList() []domain.Order
 }
 
+// NewService return order service
 func NewService(repo Repository, idGen IDGenerator) Service {
 	return &service{
 		repo:  repo,
