@@ -1,0 +1,34 @@
+1.1. User can create vendor (validation: vendor name less than 128 char)
+1.2. User can get vendor
+1.3. User can update vendor (validation: vendor name less than 128 char)
+1.4. User can delete vendor
+1.5. User can create vendor's dish
+1.6. User can update vendor's dish
+1.6. User can delete vendor's dish
+
+2. User can get dishes from vendor
+
+3.1. User can create order (user can select dishes with quantity and special request(field can be any length))
+3.2. User can get orders
+
+5. User can query filtering vendor using tags
+
+Domain:
+vendor{
+    id
+    name
+    description
+}
+dish {
+    id
+    vendor_id
+    name
+    description
+}
+order {
+    id
+    [] {
+        dish_id
+        special_request
+    }
+}
