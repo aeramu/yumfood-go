@@ -7,14 +7,22 @@ type Vendor struct {
 	Description string
 }
 
-// NewVendor constructor for vendor
-func NewVendor(name string, description string) Vendor {
-	if len(name) >= 128 {
-		name = name[:127]
+// VendorConstructor constructor for vendor
+type VendorConstructor struct {
+	ID          string
+	Name        string
+	Description string
+}
+
+// New return vendor from constructor
+func (c VendorConstructor) New() Vendor {
+	if len(c.Name) >= 128 {
+		c.Name = c.Name[:127]
 	}
 	return Vendor{
-		Name:        name,
-		Description: description,
+		ID:          c.ID,
+		Name:        c.Name,
+		Description: c.Description,
 	}
 }
 

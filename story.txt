@@ -23,12 +23,13 @@ dish {
     id
     vendor_id
     name
-    description
+    price
 }
 order {
     id
     [] {
         dish_id
+        amount
         special_request
     }
 }
