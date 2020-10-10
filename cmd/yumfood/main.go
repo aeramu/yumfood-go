@@ -9,14 +9,14 @@ import (
 	"github.com/aeramu/yumfood-go/internal/service/vendor"
 
 	"github.com/aeramu/yumfood-go/internal/controller"
+	id "github.com/aeramu/yumfood-go/internal/implementation/id/xid"
 	dishRepo "github.com/aeramu/yumfood-go/internal/implementation/repository/dummy/dish"
 	orderRepo "github.com/aeramu/yumfood-go/internal/implementation/repository/dummy/order"
 	vendorRepo "github.com/aeramu/yumfood-go/internal/implementation/repository/dummy/vendor"
-	uuid "github.com/aeramu/yumfood-go/internal/implementation/uuid/google"
 )
 
 func main() {
-	idGen := uuid.NewIDGenerator()
+	idGen := id.NewIDGenerator()
 	vendorRepo := vendorRepo.NewRepository()
 	dishRepo := dishRepo.NewRepository()
 	orderRepo := orderRepo.NewRepository()

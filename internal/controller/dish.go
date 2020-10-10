@@ -21,7 +21,8 @@ func (c controller) postDish(w http.ResponseWriter, r *http.Request) {
 	body := domain.Dish{}
 	b, _ := ioutil.ReadAll(r.Body)
 	json.Unmarshal(b, &body)
-	c.dish.Create(body.VendorID, body.Name, body.Price)
+	vendorID := mux.Vars(r)["vendorID"]
+	c.dish.Create(vendorID, body.Name, body.Price)
 }
 
 func (c controller) putDish(w http.ResponseWriter, r *http.Request) {
