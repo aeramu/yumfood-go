@@ -29,6 +29,7 @@ order {
     id
     [] {
         dish_id
+        vendor_id
         amount
         special_request
     }

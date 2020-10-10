@@ -6,3 +6,6 @@
 6. order controller: 30 minutes
 7. dish controller: 15 minutes
 8. vendor sqlite: 1 hour
+9. dish sqlite: 30 minutes
+10. order sqlite: 1 hour
+

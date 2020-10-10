@@ -1,4 +1,4 @@
-package vendor
+package vendorrepo
 
 import (
 	"github.com/aeramu/yumfood-go/internal/domain"

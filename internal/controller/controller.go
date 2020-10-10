@@ -26,8 +26,10 @@ func NewRouter(
 	r.HandleFunc("/vendors/{id}", c.deleteVendor).Methods("DELETE")
 
 	r.HandleFunc("/vendors/{vendorID}/dishes", c.postDish).Methods("POST")
+	r.HandleFunc("/vendors/{vendorID}/dishes/{id}", c.getDish).Methods("GET")
 	r.HandleFunc("/vendors/{vendorID}/dishes/{id}", c.putDish).Methods("PUT")
 	r.HandleFunc("/vendors/{vendorID}/dishes/{id}", c.deleteDish).Methods("DELETE")
+
 	r.HandleFunc("/vendors/{vendorID}/dishes", c.getDishes).Methods("GET")
 
 	r.HandleFunc("/orders", c.postOrder).Methods("POST")

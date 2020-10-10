@@ -1,4 +1,4 @@
-package vendor
+package dishrepo
 
 import (
 	"github.com/aeramu/yumfood-go/internal/domain"

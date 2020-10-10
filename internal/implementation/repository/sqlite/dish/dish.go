@@ -23,7 +23,7 @@ type repository struct {
 }
 
 func (r *repository) Put(id, vendorID, name string, price int) error {
-	statement, err := r.db.Prepare("INSERT INTO dish(id, vendor_id, name, price) values(?,?,?,?)")
+	statement, err := r.db.Prepare("INSERT INTO dishes(id, vendor_id, name, price) values(?,?,?,?)")
 	if err != nil {
 		return err
 	}
@@ -35,7 +35,7 @@ func (r *repository) Put(id, vendorID, name string, price int) error {
 }
 
 func (r *repository) Update(id, name string, price int) error {
-	statement, err := r.db.Prepare("update dish set name=?, price=? where id=?")
+	statement, err := r.db.Prepare("update dishes set name=?, price=? where id=?")
 	_, err = statement.Exec(name, price, id)
 	if err != nil {
 		return err
@@ -43,7 +43,7 @@ func (r *repository) Update(id, name string, price int) error {
 	return nil
 }
 func (r *repository) Get(id string) (domain.Dish, error) {
-	rows, err := r.db.Query("SELECT * FROM dish where id=?", id)
+	rows, err := r.db.Query("SELECT * FROM dishes where id=?", id)
 	if err != nil {
 		return domain.Dish{}, err
 	}
@@ -55,7 +55,7 @@ func (r *repository) Get(id string) (domain.Dish, error) {
 }
 
 func (r *repository) Delete(id string) error {
-	statement, err := r.db.Prepare("delete from dish where id=?")
+	statement, err := r.db.Prepare("delete from dishes where id=?")
 	_, err = statement.Exec(id)
 	if err != nil {
 		return err
@@ -64,7 +64,7 @@ func (r *repository) Delete(id string) error {
 }
 
 func (r *repository) GetListByVendorID(vendorID string) ([]domain.Dish, error) {
-	rows, err := r.db.Query("SELECT * FROM dish where vendor_id=?", vendorID)
+	rows, err := r.db.Query("SELECT * FROM dishes where vendor_id=?", vendorID)
 	if err != nil {
 		return []domain.Dish{}, err
 	}

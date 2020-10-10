@@ -1,4 +1,4 @@
-package vendor
+package orderrepo
 
 import (
 	"github.com/aeramu/yumfood-go/internal/domain"
@@ -9,16 +9,16 @@ import (
 func NewRepository() order.Repository {
 	orders := []domain.Order{
 		{"1", []domain.OrderItem{
-			{"1", 18, "sangat pedas"},
-			{"2", 2, "jangan pedas"},
+			{"1", "1", 18, "sangat pedas"},
+			{"2", "1", 2, "jangan pedas"},
 		}},
 		{"2", []domain.OrderItem{
-			{"4", 18, "sangat pedas"},
-			{"5", 18, "sangat pedas"},
-			{"6", 1, "sangat sangat pedas"},
+			{"4", "3", 18, "sangat pedas"},
+			{"5", "3", 18, "sangat pedas"},
+			{"6", "3", 1, "sangat sangat pedas"},
 		}},
 		{"3", []domain.OrderItem{
-			{"4", 18, "sangat pedas"},
+			{"3", "2", 18, "sangat pedas"},
 		}},
 	}
 	return &repository{

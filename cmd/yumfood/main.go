@@ -10,8 +10,8 @@ import (
 
 	"github.com/aeramu/yumfood-go/internal/controller"
 	id "github.com/aeramu/yumfood-go/internal/implementation/id/xid"
-	orderRepo "github.com/aeramu/yumfood-go/internal/implementation/repository/dummy/order"
 	dishRepo "github.com/aeramu/yumfood-go/internal/implementation/repository/sqlite/dish"
+	orderRepo "github.com/aeramu/yumfood-go/internal/implementation/repository/sqlite/order"
 	vendorRepo "github.com/aeramu/yumfood-go/internal/implementation/repository/sqlite/vendor"
 )
 

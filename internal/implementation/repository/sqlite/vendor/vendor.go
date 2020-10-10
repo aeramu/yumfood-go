@@ -24,7 +24,7 @@ type repository struct {
 }
 
 func (r *repository) Put(id, name, description string) error {
-	statement, err := r.db.Prepare("INSERT INTO vendor(id, name, description) values(?,?,?)")
+	statement, err := r.db.Prepare("INSERT INTO vendors(id, name, description) values(?,?,?)")
 	if err != nil {
 		return err
 	}
@@ -36,7 +36,7 @@ func (r *repository) Put(id, name, description string) error {
 }
 
 func (r *repository) Update(id, name, description string) error {
-	statement, err := r.db.Prepare("update vendor set name=?, description=? where id=?")
+	statement, err := r.db.Prepare("update vendors set name=?, description=? where id=?")
 	_, err = statement.Exec(name, description, id)
 	if err != nil {
 		return err
@@ -45,7 +45,7 @@ func (r *repository) Update(id, name, description string) error {
 }
 
 func (r *repository) Get(id string) (domain.Vendor, error) {
-	rows, err := r.db.Query("SELECT * FROM vendor where id=?", id)
+	rows, err := r.db.Query("SELECT * FROM vendors where id=?", id)
 	if err != nil {
 		return domain.Vendor{}, err
 	}
@@ -57,7 +57,7 @@ func (r *repository) Get(id string) (domain.Vendor, error) {
 }
 
 func (r *repository) Delete(id string) error {
-	statement, err := r.db.Prepare("delete from vendor where id=?")
+	statement, err := r.db.Prepare("delete from vendors where id=?")
 	_, err = statement.Exec(id)
 	if err != nil {
 		return err

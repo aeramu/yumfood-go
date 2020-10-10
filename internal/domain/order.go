@@ -8,7 +8,8 @@ type Order struct {
 
 // OrderItem entity inside Order entity
 type OrderItem struct {
-	DishID  string `json:"dish_id"`
-	Amount  int    `json:"amount"`
-	Request string `json:"request"`
+	DishID   string `json:"dish_id"`
+	VendorID string `json:"vendor_id"`
+	Amount   int    `json:"amount"`
+	Request  string `json:"request"`
 }

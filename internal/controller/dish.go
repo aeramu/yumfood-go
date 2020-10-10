@@ -17,6 +17,13 @@ func (c controller) getDishes(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(json))
 }
 
+func (c controller) getDish(w http.ResponseWriter, r *http.Request) {
+	id := mux.Vars(r)["id"]
+	dish := c.dish.Get(id)
+	json, _ := json.Marshal(dish)
+	fmt.Fprintf(w, string(json))
+}
+
 func (c controller) postDish(w http.ResponseWriter, r *http.Request) {
 	body := domain.Dish{}
 	b, _ := ioutil.ReadAll(r.Body)
