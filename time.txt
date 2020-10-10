@@ -1,4 +1,8 @@
-1. Services and Domain: 2 Hours
-2. Vendor Controller: 30 minutes
-3. order controller: 30 minutes
-4. dish controller: 15 minutes
+1. Vendor Service: 50 minutes
+2. Dish Service: 45 minutes
+3. Order Service: 20 minutes
+4. Dummy Repository:  1 hour
+5. Vendor Controller: 1 hour
+6. order controller: 30 minutes
+7. dish controller: 15 minutes
+8. vendor sqlite: 1 hour
