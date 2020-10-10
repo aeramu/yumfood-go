@@ -12,7 +12,7 @@ import (
 	id "github.com/aeramu/yumfood-go/internal/implementation/id/xid"
 	dishRepo "github.com/aeramu/yumfood-go/internal/implementation/repository/dummy/dish"
 	orderRepo "github.com/aeramu/yumfood-go/internal/implementation/repository/dummy/order"
-	vendorRepo "github.com/aeramu/yumfood-go/internal/implementation/repository/dummy/vendor"
+	vendorRepo "github.com/aeramu/yumfood-go/internal/implementation/repository/sqlite/vendor"
 )
 
 func main() {
