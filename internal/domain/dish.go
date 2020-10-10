@@ -2,8 +2,8 @@ package domain
 
 // Dish entity
 type Dish struct {
-	ID       string
-	VendorID string
-	Name     string
-	Price    int
+	ID       string `json:"id"`
+	VendorID string `json:"vendor_id"`
+	Name     string `json:"name"`
+	Price    int    `json:"price"`
 }

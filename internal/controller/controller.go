@@ -19,7 +19,19 @@ func NewRouter(
 ) http.Handler {
 	r := mux.NewRouter()
 	c := controller{vendor, dish, order}
-	r.HandleFunc("/vendor/{id}", c.getVendor)
+
+	r.HandleFunc("/vendors", c.postVendor).Methods("POST")
+	r.HandleFunc("/vendors/{id}", c.getVendor).Methods("GET")
+	r.HandleFunc("/vendors/{id}", c.getVendor).Methods("PUT")
+	r.HandleFunc("/vendors/{id}", c.getVendor).Methods("DELETE")
+
+	r.HandleFunc("/vendors/{vendorID}/dishes", c.postVendor).Methods("POST")
+	r.HandleFunc("/vendors/{vendorID}/dishes/{id}", c.getVendor).Methods("PUT")
+	r.HandleFunc("/vendors/{vendorID}/dishes/{id}", c.getVendor).Methods("DELETE")
+	r.HandleFunc("/vendors/{vendorID}/dishes", c.postVendor).Methods("GET")
+
+	r.HandleFunc("/orders", c.postOrder).Methods("POST")
+	r.HandleFunc("/orders", c.getOrders).Methods("GET")
 
 	return r
 }
