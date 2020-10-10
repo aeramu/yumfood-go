@@ -1,2 +1,4 @@
-1. Services and Domain: 1 Hours
+1. Services and Domain: 2 Hours
 2. Vendor Controller: 30 minutes
+3. order controller: 30 minutes
+4. dish controller: 15 minutes

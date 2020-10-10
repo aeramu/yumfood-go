@@ -6,6 +6,8 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	"github.com/aeramu/yumfood-go/internal/domain"
+
 	"github.com/gorilla/mux"
 )
 
@@ -17,24 +19,18 @@ func (c controller) getVendor(w http.ResponseWriter, r *http.Request) {
 }
 
 func (c controller) postVendor(w http.ResponseWriter, r *http.Request) {
-	body := struct {
-		name        string
-		description string
-	}{}
+	body := domain.Vendor{}
 	b, _ := ioutil.ReadAll(r.Body)
 	json.Unmarshal(b, &body)
-	c.vendor.Create(body.name, body.description)
+	c.vendor.Create(body.Name, body.Description)
 }
 
 func (c controller) putVendor(w http.ResponseWriter, r *http.Request) {
-	body := struct {
-		name        string
-		description string
-	}{}
+	body := domain.Vendor{}
 	b, _ := ioutil.ReadAll(r.Body)
 	json.Unmarshal(b, &body)
 	id := mux.Vars(r)["id"]
-	c.vendor.Update(id, body.name, body.description)
+	c.vendor.Update(id, body.Name, body.Description)
 }
 
 func (c controller) deleteVendor(w http.ResponseWriter, r *http.Request) {
