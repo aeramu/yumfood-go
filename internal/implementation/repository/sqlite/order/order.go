@@ -64,6 +64,9 @@ func (r *repository) GetAll() ([]domain.Order, error) {
 		items = append(items, item)
 		lastID = id
 	}
-	orders = append(orders, domain.Order{lastID, items})
+	if lastID != "" {
+		orders = append(orders, domain.Order{lastID, items})
+	}
+
 	return orders, nil
 }

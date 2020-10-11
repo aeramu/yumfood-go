@@ -18,19 +18,32 @@ func (c controller) getVendor(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(json))
 }
 
+func (c controller) getVendors(w http.ResponseWriter, r *http.Request) {
+	tags := r.URL.Query()["tags[]"]
+	vendors := c.vendor.GetList(tags...)
+	json, _ := json.Marshal(vendors)
+	fmt.Fprintf(w, string(json))
+}
+
 func (c controller) postVendor(w http.ResponseWriter, r *http.Request) {
-	body := domain.Vendor{}
+	body := struct {
+		domain.Vendor
+		Tags []string
+	}{}
 	b, _ := ioutil.ReadAll(r.Body)
 	json.Unmarshal(b, &body)
-	c.vendor.Create(body.Name, body.Description)
+	c.vendor.Create(body.Name, body.Description, body.Tags...)
 }
 
 func (c controller) putVendor(w http.ResponseWriter, r *http.Request) {
-	body := domain.Vendor{}
+	body := struct {
+		domain.Vendor
+		Tags []string
+	}{}
 	b, _ := ioutil.ReadAll(r.Body)
 	json.Unmarshal(b, &body)
 	id := mux.Vars(r)["id"]
-	c.vendor.Update(id, body.Name, body.Description)
+	c.vendor.Update(id, body.Name, body.Description, body.Tags...)
 }
 
 func (c controller) deleteVendor(w http.ResponseWriter, r *http.Request) {

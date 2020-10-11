@@ -11,7 +11,7 @@ type service struct {
 	idGen IDGenerator
 }
 
-func (s service) Create(name, description string) {
+func (s service) Create(name, description string, tags ...string) {
 	id := s.idGen.Generate()
 	if len(name) >= 128 {
 		name = name[:127]
@@ -20,15 +20,27 @@ func (s service) Create(name, description string) {
 	if err != nil {
 		log.Println(err)
 	}
+	for _, tag := range tags {
+		err = s.repo.Tag(id, tag)
+		if err != nil {
+			log.Println(err)
+		}
+	}
 }
 
-func (s service) Update(id, name, description string) {
+func (s service) Update(id, name, description string, tags ...string) {
 	if len(name) >= 128 {
 		name = name[:127]
 	}
 	err := s.repo.Update(id, name, description)
 	if err != nil {
 		log.Println(err)
+	}
+	for _, tag := range tags {
+		err = s.repo.Tag(id, tag)
+		if err != nil {
+			log.Println(err)
+		}
 	}
 }
 
@@ -38,6 +50,21 @@ func (s service) Get(id string) domain.Vendor {
 		log.Println(err)
 	}
 	return vendor
+}
+
+func (s service) GetList(tags ...string) []domain.Vendor {
+	var vendors []domain.Vendor
+	var err error
+	if len(tags) > 0 {
+		vendors, err = s.repo.GetListByTags(tags)
+	} else {
+		vendors, err = s.repo.GetAll()
+	}
+
+	if err != nil {
+		log.Println(err)
+	}
+	return vendors
 }
 
 func (s service) Delete(id string) {

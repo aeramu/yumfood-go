@@ -8,4 +8,5 @@
 8. vendor sqlite: 1 hour
 9. dish sqlite: 30 minutes
 10. order sqlite: 1 hour
+11. vendor tag filter: 1 hour
 

@@ -21,6 +21,7 @@ func NewRouter(
 	c := controller{vendor, dish, order}
 
 	r.HandleFunc("/vendors", c.postVendor).Methods("POST")
+	r.HandleFunc("/vendors", c.getVendors).Methods("GET")
 	r.HandleFunc("/vendors/{id}", c.getVendor).Methods("GET")
 	r.HandleFunc("/vendors/{id}", c.putVendor).Methods("PUT")
 	r.HandleFunc("/vendors/{id}", c.deleteVendor).Methods("DELETE")
