@@ -4,7 +4,7 @@ from various restaurants(aka vendors). API included CRUD for vendor and dish.
 ## Getting Started
 ### Clone repo
 ```bash
-git clone https://github.com/aeramu/nim-itb-scraper
+git clone https://github.com/aeramu/yumfood-go
 ```
 ### Using Docker
 This project included dockerfile, so you can use docker instead if it's easier.
